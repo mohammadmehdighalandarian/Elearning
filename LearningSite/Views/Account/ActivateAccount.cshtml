@@ -1,0 +1,29 @@
+﻿@using System.Reflection
+
+@{
+    ViewData["Titel"] = "َActivate Account";
+}
+<h1>فعال سازی</h1>
+
+<div class="container">
+    @if (ViewBag.IsActive)
+    {
+        <div class="text-success">
+            <p>
+                حساب کاربری با موفقیت فعال شد.
+            </p>
+            <p>
+                <a href="/Login">ورود به سایت</a>
+            </p>
+        </div>
+    }
+    else
+    {
+        <div class="text-danger">
+            <p>
+                حساب کاربری با مشخصات ارسال شده مطابقت ندارد.
+            </p>
+        </div>
+
+    }
+</div>

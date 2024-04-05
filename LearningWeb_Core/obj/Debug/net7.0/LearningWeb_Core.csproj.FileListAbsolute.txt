@@ -1,0 +1,45 @@
+C:\Users\MohammadMehdi\Desktop\ELearning-master\LearningWeb_Core\bin\Debug\net7.0\LearningWeb_Core.deps.json
+C:\Users\MohammadMehdi\Desktop\ELearning-master\LearningWeb_Core\bin\Debug\net7.0\LearningWeb_Core.dll
+C:\Users\MohammadMehdi\Desktop\ELearning-master\LearningWeb_Core\bin\Debug\net7.0\LearningWeb_Core.pdb
+C:\Users\MohammadMehdi\Desktop\ELearning-master\LearningWeb_Core\bin\Debug\net7.0\DataLayer.dll
+C:\Users\MohammadMehdi\Desktop\ELearning-master\LearningWeb_Core\bin\Debug\net7.0\DataLayer.pdb
+C:\Users\MohammadMehdi\Desktop\ELearning-master\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.csproj.AssemblyReference.cache
+C:\Users\MohammadMehdi\Desktop\ELearning-master\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MohammadMehdi\Desktop\ELearning-master\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.AssemblyInfoInputs.cache
+C:\Users\MohammadMehdi\Desktop\ELearning-master\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.AssemblyInfo.cs
+C:\Users\MohammadMehdi\Desktop\ELearning-master\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.csproj.CoreCompileInputs.cache
+C:\Users\MohammadMehdi\Desktop\ELearning-master\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.csproj.CopyComplete
+C:\Users\MohammadMehdi\Desktop\ELearning-master\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.dll
+C:\Users\MohammadMehdi\Desktop\ELearning-master\LearningWeb_Core\obj\Debug\net7.0\refint\LearningWeb_Core.dll
+C:\Users\MohammadMehdi\Desktop\ELearning-master\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.pdb
+C:\Users\MohammadMehdi\Desktop\ELearning-master\LearningWeb_Core\obj\Debug\net7.0\ref\LearningWeb_Core.dll
+C:\Users\MohammadMehdi\Desktop\WebsiteProject\LearningWeb_Core\bin\Debug\net7.0\LearningWeb_Core.deps.json
+C:\Users\MohammadMehdi\Desktop\WebsiteProject\LearningWeb_Core\bin\Debug\net7.0\LearningWeb_Core.dll
+C:\Users\MohammadMehdi\Desktop\WebsiteProject\LearningWeb_Core\bin\Debug\net7.0\LearningWeb_Core.pdb
+C:\Users\MohammadMehdi\Desktop\WebsiteProject\LearningWeb_Core\bin\Debug\net7.0\DataLayer.dll
+C:\Users\MohammadMehdi\Desktop\WebsiteProject\LearningWeb_Core\bin\Debug\net7.0\DataLayer.pdb
+C:\Users\MohammadMehdi\Desktop\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.csproj.AssemblyReference.cache
+C:\Users\MohammadMehdi\Desktop\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MohammadMehdi\Desktop\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.AssemblyInfoInputs.cache
+C:\Users\MohammadMehdi\Desktop\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.AssemblyInfo.cs
+C:\Users\MohammadMehdi\Desktop\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.csproj.CoreCompileInputs.cache
+C:\Users\MohammadMehdi\Desktop\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.csproj.CopyComplete
+C:\Users\MohammadMehdi\Desktop\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.dll
+C:\Users\MohammadMehdi\Desktop\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\refint\LearningWeb_Core.dll
+C:\Users\MohammadMehdi\Desktop\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.pdb
+C:\Users\MohammadMehdi\Desktop\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\ref\LearningWeb_Core.dll
+C:\Users\MohammadMehdi\Desktop\New folder (2)\WebsiteProject\LearningWeb_Core\bin\Debug\net7.0\LearningWeb_Core.deps.json
+C:\Users\MohammadMehdi\Desktop\New folder (2)\WebsiteProject\LearningWeb_Core\bin\Debug\net7.0\LearningWeb_Core.dll
+C:\Users\MohammadMehdi\Desktop\New folder (2)\WebsiteProject\LearningWeb_Core\bin\Debug\net7.0\LearningWeb_Core.pdb
+C:\Users\MohammadMehdi\Desktop\New folder (2)\WebsiteProject\LearningWeb_Core\bin\Debug\net7.0\DataLayer.dll
+C:\Users\MohammadMehdi\Desktop\New folder (2)\WebsiteProject\LearningWeb_Core\bin\Debug\net7.0\DataLayer.pdb
+C:\Users\MohammadMehdi\Desktop\New folder (2)\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.csproj.AssemblyReference.cache
+C:\Users\MohammadMehdi\Desktop\New folder (2)\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MohammadMehdi\Desktop\New folder (2)\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.AssemblyInfoInputs.cache
+C:\Users\MohammadMehdi\Desktop\New folder (2)\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.AssemblyInfo.cs
+C:\Users\MohammadMehdi\Desktop\New folder (2)\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.csproj.CoreCompileInputs.cache
+C:\Users\MohammadMehdi\Desktop\New folder (2)\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.csproj.CopyComplete
+C:\Users\MohammadMehdi\Desktop\New folder (2)\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.dll
+C:\Users\MohammadMehdi\Desktop\New folder (2)\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\refint\LearningWeb_Core.dll
+C:\Users\MohammadMehdi\Desktop\New folder (2)\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\LearningWeb_Core.pdb
+C:\Users\MohammadMehdi\Desktop\New folder (2)\WebsiteProject\LearningWeb_Core\obj\Debug\net7.0\ref\LearningWeb_Core.dll
