@@ -9,15 +9,17 @@ namespace LearningSite.Controllers
     public class HomeController : Controller
     {
         private readonly IUserServices _userServices;
+        private readonly ICourseService _courseService;
 
-        public HomeController(IUserServices userServices)
+        public HomeController(IUserServices userServices, ICourseService courseService)
         {
             _userServices = userServices;
+            _courseService = courseService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_courseService.GetAllCourseForIndex());
         }
 
         

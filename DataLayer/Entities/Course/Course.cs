@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DataLayer.Entities.Order;
 
 namespace DataLayer.Entities.Course
 {
@@ -69,10 +70,11 @@ namespace DataLayer.Entities.Course
 
         
         public List<CourseEpisode> CourseEpisodes { get; set; }
+        //public List<OrderDetail> OrderDetails { get; set; }
 
         #endregion
 
 
-       
+
     }
 }

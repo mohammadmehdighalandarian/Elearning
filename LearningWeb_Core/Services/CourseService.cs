@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LearningWeb_Core.Convertors;
 using LearningWeb_Core.DTOs.AdminPanel;
+using LearningWeb_Core.DTOs.Course;
 using LearningWeb_Core.Generator;
 using LearningWeb_Core.Security;
 
@@ -78,6 +79,11 @@ namespace LearningWeb_Core.Services
 
         #region Group
 
+        public List<CourseGroup> GetAllGroups()
+        {
+            return _siteContext.CourseGroups.Include(c => c.CourseGroups).ToList();
+        }
+
         public List<CourseGroup> GetAllCourse()
         {
             return _siteContext.CourseGroups.ToList();
@@ -126,7 +132,7 @@ namespace LearningWeb_Core.Services
 
         public List<SelectListItem> GetStatues()
         {
-            return _siteContext.CourseStatus.Select(s => new SelectListItem()
+            return _siteContext.CourseStatuses.Select(s => new SelectListItem()
             {
                 Value = s.StatusId.ToString(),
                 Text = s.StatusTitle
@@ -150,9 +156,27 @@ namespace LearningWeb_Core.Services
 
 
 
-    #endregion
+        #endregion
 
-    #region Course
+        #region Course
+
+        //public List<ShowCourseInIndexViewModel> GetPopularCourse()
+        //{
+        //    //return _siteContext.Courses.Include(c => c.OrderDetails)
+        //    //    .Include(c => c.CourseEpisodes)
+        //    //    .Where(c => c.OrderDetails.Any())
+        //    //    .OrderByDescending(d => d.OrderDetails.Count)
+        //    //    .Take(8)
+        //    //    .Select(c => new ShowCourseInIndexViewModel()
+        //    //    {
+        //    //        CourseId = c.Id,
+        //    //        ImageName = c.CourseImageName,
+        //    //        Price = c.CoursePrice,
+        //    //        Title = c.CourseTitle,
+        //    //        CourseEpisodes = c.CourseEpisodes
+        //    //    })
+        //    //    .ToList();
+        //}
 
         public bool IsFree(long courseId)
         {
@@ -216,6 +240,95 @@ namespace LearningWeb_Core.Services
         public void UpdateCourse(Course course, IFormFile imgCourse, IFormFile courseDemo)
         {
             throw new NotImplementedException();
+        }
+
+        public Tuple<List<ShowCourseInIndexViewModel>,int> GetAllCourseForIndex(int pageId = 1, string filter = "", string getType = "all", string orderByType = "date",
+            int startPrice = 0, int endPrice = 0, List<int> selectedGroups = null, int take = 0)
+        {
+            if (take == 0)
+                take = 8;
+
+            IQueryable<Course> result = _siteContext.Courses;
+
+            if (!string.IsNullOrEmpty(filter))
+            {
+                result = result.Where(c => c.CourseTitle.Contains(filter) || c.Tags.Contains(filter));
+            }
+
+            switch (getType)
+            {
+                case "all":
+                    break;
+                case "buy":
+                    {
+                        result = result.Where(c => c.CoursePrice != 0);
+                        break;
+                    }
+                case "free":
+                    {
+                        result = result.Where(c => c.CoursePrice == 0);
+                        break;
+                    }
+
+            }
+
+            switch (orderByType)
+            {
+                case "date":
+                    {
+                        result = result.OrderByDescending(c => c.CreateDate);
+                        break;
+                    }
+                case "updatedate":
+                    {
+                        result = result.OrderByDescending(c => c.UpdateDate);
+                        break;
+                    }
+            }
+
+            if (startPrice > 0)
+            {
+                result = result.Where(c => c.CoursePrice > startPrice);
+            }
+
+            if (endPrice > 0)
+            {
+                result = result.Where(c => c.CoursePrice < startPrice);
+            }
+
+
+            if (selectedGroups != null && selectedGroups.Any())
+            {
+                foreach (int groupId in selectedGroups)
+                {
+                    result = result.Where(c => c.GroupId == groupId || c.SubGroup == groupId);
+                }
+
+            }
+
+            int skip = (pageId - 1) * take;
+
+            int pageCount = result.Include(c => c.CourseEpisodes).Select(c => new ShowCourseInIndexViewModel()
+            {
+                CourseId = c.Id,
+                ImageName = c.CourseImageName,
+                Price = c.CoursePrice,
+                Title = c.CourseTitle,
+                // TotalTime = new TimeSpan(c.CourseEpisodes.Sum(e => e.EpisodeTime.Ticks))
+            }).Count() / take;
+
+            var query = result.Include(c => c.CourseEpisodes)
+                .Include(c => c.CourseEpisodes)
+                .Select(c => new ShowCourseInIndexViewModel()
+                {
+                    CourseId = c.Id,
+                    ImageName = c.CourseImageName,
+                    Price = c.CoursePrice,
+                    Title = c.CourseTitle,
+                    CourseEpisodes = c.CourseEpisodes
+                }).Skip(skip).Take(take).ToList();
+
+            return Tuple.Create(query,pageId);
         }
 
         public Course GetCourseForShow(long courseId)

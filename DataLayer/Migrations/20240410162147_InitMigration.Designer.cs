@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataLayer.Migrations
 {
     [DbContext(typeof(SiteContext))]
-    [Migration("20231228203521_Initial")]
-    partial class Initial
+    [Migration("20240410162147_InitMigration")]
+    partial class InitMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -94,6 +94,48 @@ namespace DataLayer.Migrations
                     b.HasIndex("TeacherId");
 
                     b.ToTable("Courses");
+                });
+
+            modelBuilder.Entity("DataLayer.Entities.Course.CourseComment", b =>
+                {
+                    b.Property<long>("CommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("CommentId"));
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasMaxLength(700)
+                        .HasColumnType("nvarchar(700)");
+
+                    b.Property<long>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsAdminRead")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("UserId1")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("CourseComment");
                 });
 
             modelBuilder.Entity("DataLayer.Entities.Course.CourseEpisode", b =>
@@ -188,7 +230,126 @@ namespace DataLayer.Migrations
 
                     b.HasKey("StatusId");
 
-                    b.ToTable("CourseStatus");
+                    b.ToTable("CourseStatuses");
+                });
+
+            modelBuilder.Entity("DataLayer.Entities.Course.CourseVote", b =>
+                {
+                    b.Property<long>("VoteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("VoteId"));
+
+                    b.Property<long>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("UserId1")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("Vote")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("VoteDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("VoteId");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("CourseVotes");
+                });
+
+            modelBuilder.Entity("DataLayer.Entities.Course.UserCourse", b =>
+                {
+                    b.Property<long>("UC_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("UC_Id"));
+
+                    b.Property<long>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("UserId1")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("UC_Id");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("UserCourses");
+                });
+
+            modelBuilder.Entity("DataLayer.Entities.Order.Discount", b =>
+                {
+                    b.Property<long>("DiscountId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("DiscountId"));
+
+                    b.Property<string>("DiscountCode")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<long>("DiscountPercent")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("UsableCount")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("DiscountId");
+
+                    b.ToTable("Discount");
+                });
+
+            modelBuilder.Entity("DataLayer.Entities.Order.Order", b =>
+                {
+                    b.Property<long>("OrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("OrderId"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsFinaly")
+                        .HasColumnType("bit");
+
+                    b.Property<long>("OrderSum")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("OrderId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("DataLayer.Entities.Permision.Permision", b =>
@@ -211,7 +372,7 @@ namespace DataLayer.Migrations
 
                     b.HasIndex("ParentID");
 
-                    b.ToTable("Permisions");
+                    b.ToTable("Permission");
                 });
 
             modelBuilder.Entity("DataLayer.Entities.Permision.RolePermision", b =>
@@ -234,7 +395,7 @@ namespace DataLayer.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("RolePermisions");
+                    b.ToTable("RolePermission");
                 });
 
             modelBuilder.Entity("DataLayer.Entities.User.Role", b =>
@@ -301,6 +462,29 @@ namespace DataLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("DataLayer.Entities.User.UserDiscountCode", b =>
+                {
+                    b.Property<long>("UD_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("UD_Id"));
+
+                    b.Property<long>("DiscountId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("UD_Id");
+
+                    b.HasIndex("DiscountId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserDiscountCodes");
                 });
 
             modelBuilder.Entity("DataLayer.Entities.User.UserRole", b =>
@@ -403,7 +587,7 @@ namespace DataLayer.Migrations
                         .HasForeignKey("SubGroup");
 
                     b.HasOne("DataLayer.Entities.User.User", "User")
-                        .WithMany()
+                        .WithMany("Courses")
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -415,6 +599,29 @@ namespace DataLayer.Migrations
                     b.Navigation("MainGroup");
 
                     b.Navigation("Sub_Group");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DataLayer.Entities.Course.CourseComment", b =>
+                {
+                    b.HasOne("DataLayer.Entities.Course.Course", "Course")
+                        .WithMany()
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataLayer.Entities.User.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("DataLayer.Entities.User.User", null)
+                        .WithMany("CourseComments")
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("Course");
 
                     b.Navigation("User");
                 });
@@ -435,6 +642,63 @@ namespace DataLayer.Migrations
                     b.HasOne("DataLayer.Entities.Course.CourseGroup", null)
                         .WithMany("CourseGroups")
                         .HasForeignKey("ParentId");
+                });
+
+            modelBuilder.Entity("DataLayer.Entities.Course.CourseVote", b =>
+                {
+                    b.HasOne("DataLayer.Entities.Course.Course", "Course")
+                        .WithMany()
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataLayer.Entities.User.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("DataLayer.Entities.User.User", null)
+                        .WithMany("CourseVotes")
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("Course");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DataLayer.Entities.Course.UserCourse", b =>
+                {
+                    b.HasOne("DataLayer.Entities.Course.Course", "Course")
+                        .WithMany()
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataLayer.Entities.User.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("DataLayer.Entities.User.User", null)
+                        .WithMany("UserCourses")
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("Course");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DataLayer.Entities.Order.Order", b =>
+                {
+                    b.HasOne("DataLayer.Entities.User.User", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DataLayer.Entities.Permision.Permision", b =>
@@ -461,6 +725,25 @@ namespace DataLayer.Migrations
                     b.Navigation("Permision");
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("DataLayer.Entities.User.UserDiscountCode", b =>
+                {
+                    b.HasOne("DataLayer.Entities.Order.Discount", "Discount")
+                        .WithMany("UserDiscountCodes")
+                        .HasForeignKey("DiscountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataLayer.Entities.User.User", "User")
+                        .WithMany("UserDiscountCodes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Discount");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DataLayer.Entities.User.UserRole", b =>
@@ -525,6 +808,11 @@ namespace DataLayer.Migrations
                     b.Navigation("Courses");
                 });
 
+            modelBuilder.Entity("DataLayer.Entities.Order.Discount", b =>
+                {
+                    b.Navigation("UserDiscountCodes");
+                });
+
             modelBuilder.Entity("DataLayer.Entities.Permision.Permision", b =>
                 {
                     b.Navigation("Parents");
@@ -541,6 +829,18 @@ namespace DataLayer.Migrations
 
             modelBuilder.Entity("DataLayer.Entities.User.User", b =>
                 {
+                    b.Navigation("CourseComments");
+
+                    b.Navigation("CourseVotes");
+
+                    b.Navigation("Courses");
+
+                    b.Navigation("Orders");
+
+                    b.Navigation("UserCourses");
+
+                    b.Navigation("UserDiscountCodes");
+
                     b.Navigation("UserRoles");
 
                     b.Navigation("Wallets");

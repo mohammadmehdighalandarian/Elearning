@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DataLayer.Entities.Course;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataLayer.Entities.User
 {
@@ -23,13 +24,21 @@ namespace DataLayer.Entities.User
 
         public bool Isdeleted { get; set; }=false;
 
-        public List<UserRole> UserRoles { get; set; }
+        
 
        
         #region Relation
 
         
         public  List<Wallet.Wallet> Wallets { get; set; }
+        public virtual List<UserRole> UserRoles { get; set; }
+        public virtual List<Course.Course> Courses { get; set; }
+        public virtual List<Order.Order> Orders { get; set; }
+        public List<UserCourse> UserCourses { get; set; }
+        public List<UserDiscountCode> UserDiscountCodes { get; set; }
+        public List<CourseComment> CourseComments { get; set; }
+
+        public List<CourseVote> CourseVotes { get; set; }
 
         #endregion
 

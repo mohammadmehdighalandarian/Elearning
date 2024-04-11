@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0cFGq1IXoZtr+oa0ofKIeHeTfvaSuuGOibgrz18LCJg=",
+  "Hash": "u76O2vNjst3RyN4rQdWMyizi8K5X+byQ9Bh8xbOczfU=",
   "Source": "LearningSite",
   "BasePath": "_content/LearningSite",
   "Mode": "Default",
@@ -1122,6 +1122,23 @@
       "OriginalItemSpec": "wwwroot\\AdminContent\\js\\sb-admin.js"
     },
     {
+      "Identity": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\course\\demoes\\6df6b287526645ea8ec12a8e8e936e07.png",
+      "SourceId": "LearningSite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\",
+      "BasePath": "_content/LearningSite",
+      "RelativePath": "course/demoes/6df6b287526645ea8ec12a8e8e936e07.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\course\\demoes\\6df6b287526645ea8ec12a8e8e936e07.png"
+    },
+    {
       "Identity": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\course\\demoes\\8a741bca037d407a8402351f748982e0.mp4",
       "SourceId": "LearningSite",
       "SourceType": "Discovered",
@@ -1239,6 +1256,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\course\\image\\430f6d829cbe47dab0556b1fb7709f1d.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\course\\image\\4527bef0ae124112b5a5aecb42511bc2.jpg",
+      "SourceId": "LearningSite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\",
+      "BasePath": "_content/LearningSite",
+      "RelativePath": "course/image/4527bef0ae124112b5a5aecb42511bc2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\course\\image\\4527bef0ae124112b5a5aecb42511bc2.jpg"
     },
     {
       "Identity": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\course\\image\\502a17173bb142c8a7a0cd9a2b59f96e.jpg",
@@ -1647,6 +1681,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\course\\thumb\\430f6d829cbe47dab0556b1fb7709f1d.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\course\\thumb\\4527bef0ae124112b5a5aecb42511bc2.jpg",
+      "SourceId": "LearningSite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\",
+      "BasePath": "_content/LearningSite",
+      "RelativePath": "course/thumb/4527bef0ae124112b5a5aecb42511bc2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\course\\thumb\\4527bef0ae124112b5a5aecb42511bc2.jpg"
     },
     {
       "Identity": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\course\\thumb\\502a17173bb142c8a7a0cd9a2b59f96e.jpg",

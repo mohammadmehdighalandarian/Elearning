@@ -377,6 +377,10 @@
       "PackagePath": "staticwebassets\\courseOnline\\01_MohrKhatam.mp4"
     },
     {
+      "Id": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\course\\demoes\\6df6b287526645ea8ec12a8e8e936e07.png",
+      "PackagePath": "staticwebassets\\course\\demoes\\6df6b287526645ea8ec12a8e8e936e07.png"
+    },
+    {
       "Id": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\course\\demoes\\8a741bca037d407a8402351f748982e0.mp4",
       "PackagePath": "staticwebassets\\course\\demoes\\8a741bca037d407a8402351f748982e0.mp4"
     },
@@ -403,6 +407,10 @@
     {
       "Id": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\course\\image\\430f6d829cbe47dab0556b1fb7709f1d.jpg",
       "PackagePath": "staticwebassets\\course\\image\\430f6d829cbe47dab0556b1fb7709f1d.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\course\\image\\4527bef0ae124112b5a5aecb42511bc2.jpg",
+      "PackagePath": "staticwebassets\\course\\image\\4527bef0ae124112b5a5aecb42511bc2.jpg"
     },
     {
       "Id": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\course\\image\\502a17173bb142c8a7a0cd9a2b59f96e.jpg",
@@ -499,6 +507,10 @@
     {
       "Id": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\course\\thumb\\430f6d829cbe47dab0556b1fb7709f1d.jpg",
       "PackagePath": "staticwebassets\\course\\thumb\\430f6d829cbe47dab0556b1fb7709f1d.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\course\\thumb\\4527bef0ae124112b5a5aecb42511bc2.jpg",
+      "PackagePath": "staticwebassets\\course\\thumb\\4527bef0ae124112b5a5aecb42511bc2.jpg"
     },
     {
       "Id": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\course\\thumb\\502a17173bb142c8a7a0cd9a2b59f96e.jpg",

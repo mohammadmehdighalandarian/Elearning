@@ -80,12 +80,12 @@ namespace LearningWeb_Core.Services
 
         public List<Permision> GetAllPermitions()
         {
-            return _siteContext.Permisions.ToList();
+            return _siteContext.Permission.ToList();
         }
 
         public List<long> GetPermitionOfRole(long roleId)
         {
-            return _siteContext.RolePermisions
+            return _siteContext.RolePermission
                 .Where(x => x.RoleId == roleId)
                 .Select(x => x.PermissionId)
                 .ToList();
@@ -95,7 +95,7 @@ namespace LearningWeb_Core.Services
         {
             foreach (var permition in permitions)
             {
-                _siteContext.RolePermisions.Add(new RolePermision
+                _siteContext.RolePermission.Add(new RolePermision
                 {
                     RoleId = roleId,
                     PermissionId = permition,
@@ -107,12 +107,12 @@ namespace LearningWeb_Core.Services
 
         public void UpdatePermitionOfRole(List<long> permition, long roleId)
         {
-            var Remove = _siteContext.RolePermisions.Where(x => x.RoleId == roleId);
-            _siteContext.RolePermisions.RemoveRange(Remove);
+            var Remove = _siteContext.RolePermission.Where(x => x.RoleId == roleId);
+            _siteContext.RolePermission.RemoveRange(Remove);
 
             foreach (var p in permition)
             {
-                _siteContext.RolePermisions.Add(new RolePermision
+                _siteContext.RolePermission.Add(new RolePermision
                 {
                     RoleId = roleId,
                     PermissionId = p
@@ -139,7 +139,7 @@ namespace LearningWeb_Core.Services
 
             List<long> PermissionOfRole =
                     _siteContext
-                        .RolePermisions
+                        .RolePermission
                         .Where(x => x.PermissionId == permisionId)
                         .Select(x => x.RoleId)
                         .ToList();

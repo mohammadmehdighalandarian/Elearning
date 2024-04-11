@@ -1,5 +1,6 @@
 ﻿using DataLayer.Entities.Course;
 using LearningWeb_Core.DTOs.AdminPanel;
+using LearningWeb_Core.DTOs.Course;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -9,7 +10,7 @@ namespace LearningWeb_Core.Services
     {
 
         #region Group
-
+        List<CourseGroup> GetAllGroups();
         List<CourseGroup> GetAllCourse();
         List<SelectListItem> GetGroupForCreateCourse();
         List<SelectListItem> GetSubGroupForCreateCourse(long groupId);
@@ -32,13 +33,15 @@ namespace LearningWeb_Core.Services
 
         void UpdateCourse(Course course, IFormFile imgCourse, IFormFile courseDemo);
 
-        //Tuple<List<ShowCourseListItemViewModel>, int> GetCourse(int pageId = 1, string filter = "", string getType = "all",
-        //    string orderByType = "date", int startPrice = 0, int endPrice = 0, List<int> selectedGroups = null, int take = 0);
+       Tuple<List<ShowCourseInIndexViewModel>,int>  GetAllCourseForIndex(int pageId = 1, string filter = "", string getType = "all",
+            string orderByType = "date", int startPrice = 0, int endPrice = 0, List<int> selectedGroups = null, int take = 0);
 
         Course GetCourseForShow(long courseId);
 
-        //List<ShowCourseListItemViewModel> GetPopularCourse();
+        //List<ShowCourseInIndexViewModel> GetPopularCourse();
+
         bool IsFree(long courseId);
+
 
         #endregion
 

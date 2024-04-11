@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -45,7 +45,7 @@ namespace DataLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CourseStatus",
+                name: "CourseStatuses",
                 columns: table => new
                 {
                     StatusId = table.Column<long>(type: "bigint", nullable: false)
@@ -54,11 +54,28 @@ namespace DataLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CourseStatus", x => x.StatusId);
+                    table.PrimaryKey("PK_CourseStatuses", x => x.StatusId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Permisions",
+                name: "Discount",
+                columns: table => new
+                {
+                    DiscountId = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DiscountCode = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    DiscountPercent = table.Column<long>(type: "bigint", nullable: false),
+                    UsableCount = table.Column<long>(type: "bigint", nullable: true),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Discount", x => x.DiscountId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Permission",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -68,11 +85,11 @@ namespace DataLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Permisions", x => x.Id);
+                    table.PrimaryKey("PK_Permission", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Permisions_Permisions_ParentID",
+                        name: "FK_Permission_Permission_ParentID",
                         column: x => x.ParentID,
-                        principalTable: "Permisions",
+                        principalTable: "Permission",
                         principalColumn: "Id");
                 });
 
@@ -123,7 +140,7 @@ namespace DataLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RolePermisions",
+                name: "RolePermission",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -133,15 +150,15 @@ namespace DataLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RolePermisions", x => x.Id);
+                    table.PrimaryKey("PK_RolePermission", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RolePermisions_Permisions_PermissionId",
+                        name: "FK_RolePermission_Permission_PermissionId",
                         column: x => x.PermissionId,
-                        principalTable: "Permisions",
+                        principalTable: "Permission",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_RolePermisions_Roles_RoleId",
+                        name: "FK_RolePermission_Roles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "Roles",
                         principalColumn: "Id",
@@ -189,14 +206,62 @@ namespace DataLayer.Migrations
                         principalColumn: "LevelId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Courses_CourseStatus_StatusId",
+                        name: "FK_Courses_CourseStatuses_StatusId",
                         column: x => x.StatusId,
-                        principalTable: "CourseStatus",
+                        principalTable: "CourseStatuses",
                         principalColumn: "StatusId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Courses_Users_TeacherId",
                         column: x => x.TeacherId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    OrderId = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
+                    OrderSum = table.Column<long>(type: "bigint", nullable: false),
+                    IsFinaly = table.Column<bool>(type: "bit", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.OrderId);
+                    table.ForeignKey(
+                        name: "FK_Orders_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserDiscountCodes",
+                columns: table => new
+                {
+                    UD_Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
+                    DiscountId = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserDiscountCodes", x => x.UD_Id);
+                    table.ForeignKey(
+                        name: "FK_UserDiscountCodes_Discount_DiscountId",
+                        column: x => x.DiscountId,
+                        principalTable: "Discount",
+                        principalColumn: "DiscountId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserDiscountCodes_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -259,6 +324,41 @@ namespace DataLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CourseComment",
+                columns: table => new
+                {
+                    CommentId = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CourseId = table.Column<long>(type: "bigint", nullable: false),
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
+                    Comment = table.Column<string>(type: "nvarchar(700)", maxLength: 700, nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false),
+                    IsAdminRead = table.Column<bool>(type: "bit", nullable: false),
+                    UserId1 = table.Column<long>(type: "bigint", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CourseComment", x => x.CommentId);
+                    table.ForeignKey(
+                        name: "FK_CourseComment_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CourseComment_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_CourseComment_Users_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CourseEpisodes",
                 columns: table => new
                 {
@@ -280,6 +380,85 @@ namespace DataLayer.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "CourseVotes",
+                columns: table => new
+                {
+                    VoteId = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CourseId = table.Column<long>(type: "bigint", nullable: false),
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
+                    Vote = table.Column<bool>(type: "bit", nullable: false),
+                    VoteDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UserId1 = table.Column<long>(type: "bigint", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CourseVotes", x => x.VoteId);
+                    table.ForeignKey(
+                        name: "FK_CourseVotes_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CourseVotes_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_CourseVotes_Users_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserCourses",
+                columns: table => new
+                {
+                    UC_Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
+                    CourseId = table.Column<long>(type: "bigint", nullable: false),
+                    UserId1 = table.Column<long>(type: "bigint", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserCourses", x => x.UC_Id);
+                    table.ForeignKey(
+                        name: "FK_UserCourses_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserCourses_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_UserCourses_Users_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CourseComment_CourseId",
+                table: "CourseComment",
+                column: "CourseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CourseComment_UserId",
+                table: "CourseComment",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CourseComment_UserId1",
+                table: "CourseComment",
+                column: "UserId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CourseEpisodes_CourseId",
@@ -317,19 +496,64 @@ namespace DataLayer.Migrations
                 column: "TeacherId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Permisions_ParentID",
-                table: "Permisions",
+                name: "IX_CourseVotes_CourseId",
+                table: "CourseVotes",
+                column: "CourseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CourseVotes_UserId",
+                table: "CourseVotes",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CourseVotes_UserId1",
+                table: "CourseVotes",
+                column: "UserId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_UserId",
+                table: "Orders",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Permission_ParentID",
+                table: "Permission",
                 column: "ParentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RolePermisions_PermissionId",
-                table: "RolePermisions",
+                name: "IX_RolePermission_PermissionId",
+                table: "RolePermission",
                 column: "PermissionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RolePermisions_RoleId",
-                table: "RolePermisions",
+                name: "IX_RolePermission_RoleId",
+                table: "RolePermission",
                 column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserCourses_CourseId",
+                table: "UserCourses",
+                column: "CourseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserCourses_UserId",
+                table: "UserCourses",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserCourses_UserId1",
+                table: "UserCourses",
+                column: "UserId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserDiscountCodes_DiscountId",
+                table: "UserDiscountCodes",
+                column: "DiscountId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserDiscountCodes_UserId",
+                table: "UserDiscountCodes",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserRoles_RoleId",
@@ -356,10 +580,25 @@ namespace DataLayer.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "CourseComment");
+
+            migrationBuilder.DropTable(
                 name: "CourseEpisodes");
 
             migrationBuilder.DropTable(
-                name: "RolePermisions");
+                name: "CourseVotes");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "RolePermission");
+
+            migrationBuilder.DropTable(
+                name: "UserCourses");
+
+            migrationBuilder.DropTable(
+                name: "UserDiscountCodes");
 
             migrationBuilder.DropTable(
                 name: "UserRoles");
@@ -368,10 +607,13 @@ namespace DataLayer.Migrations
                 name: "Wallets");
 
             migrationBuilder.DropTable(
+                name: "Permission");
+
+            migrationBuilder.DropTable(
                 name: "Courses");
 
             migrationBuilder.DropTable(
-                name: "Permisions");
+                name: "Discount");
 
             migrationBuilder.DropTable(
                 name: "Roles");
@@ -386,7 +628,7 @@ namespace DataLayer.Migrations
                 name: "CourseLevels");
 
             migrationBuilder.DropTable(
-                name: "CourseStatus");
+                name: "CourseStatuses");
 
             migrationBuilder.DropTable(
                 name: "Users");
