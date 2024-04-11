@@ -36,7 +36,7 @@ namespace LearningWeb_Core.Services
        Tuple<List<ShowCourseInIndexViewModel>,int>  GetAllCourseForIndex(int pageId = 1, string filter = "", string getType = "all",
             string orderByType = "date", int startPrice = 0, int endPrice = 0, List<int> selectedGroups = null, int take = 0);
 
-        Course GetCourseForShow(long courseId);
+        Course GetCourseWithDetailsForShow(long courseId);
 
         //List<ShowCourseInIndexViewModel> GetPopularCourse();
 

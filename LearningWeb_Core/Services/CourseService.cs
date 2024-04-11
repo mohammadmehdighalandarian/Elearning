@@ -314,7 +314,7 @@ namespace LearningWeb_Core.Services
                 ImageName = c.CourseImageName,
                 Price = c.CoursePrice,
                 Title = c.CourseTitle,
-                // TotalTime = new TimeSpan(c.CourseEpisodes.Sum(e => e.EpisodeTime.Ticks))
+                TotalTime = new TimeSpan(c.CourseEpisodes.Sum(e => e.EpisodeTime.Ticks))
             }).Count() / take;
 
             var query = result.Include(c => c.CourseEpisodes)
@@ -331,9 +331,12 @@ namespace LearningWeb_Core.Services
             return Tuple.Create(query,pageId);
         }
 
-        public Course GetCourseForShow(long courseId)
+        public Course GetCourseWithDetailsForShow(long Id)
         {
-            throw new NotImplementedException();
+             return _siteContext.Courses.Include(c => c.CourseEpisodes)
+                .Include(c => c.CourseStatus).Include(c => c.CourseLevel)
+                .Include(c => c.User).Include(c => c.UserCourses)
+                .FirstOrDefault(c => c.Id == Id);
         }
 
 

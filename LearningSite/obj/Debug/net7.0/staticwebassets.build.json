@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "u76O2vNjst3RyN4rQdWMyizi8K5X+byQ9Bh8xbOczfU=",
+  "Hash": "dvwMr5W6fwTP9Q1/X9xXbpOpNIu/cGoh+us/nnDEaSg=",
   "Source": "LearningSite",
   "BasePath": "_content/LearningSite",
   "Mode": "Default",
@@ -5117,12 +5117,12 @@
       "OriginalItemSpec": "wwwroot\\UserAvatar\\c0ac698b00a54a2fb27cf97d79ae2441.jpg"
     },
     {
-      "Identity": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\UserAvatar\\Defualt.jpg",
+      "Identity": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\UserAvatar\\Defualt.png",
       "SourceId": "LearningSite",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\MohammadMehdi\\Desktop\\WebsiteProject\\LearningSite\\wwwroot\\",
       "BasePath": "_content/LearningSite",
-      "RelativePath": "UserAvatar/Defualt.jpg",
+      "RelativePath": "UserAvatar/Defualt.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -5131,7 +5131,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\UserAvatar\\Defualt.jpg"
+      "OriginalItemSpec": "wwwroot\\UserAvatar\\Defualt.png"
     }
   ]
 }

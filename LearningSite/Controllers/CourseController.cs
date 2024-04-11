@@ -25,5 +25,14 @@ namespace LearningSite.Controllers
             ViewBag.pageId = pageId;
             return View(_courseService.GetAllCourseForIndex(pageId, filter, getType, orderByType, startPrice, endPrice, selectedGroups, 9));
         }
+
+        [Route("ShowCourse/{id}")]
+        public IActionResult ShowCourseWithDetails(long id)
+        {
+            var Course = _courseService.GetCourseWithDetailsForShow(id);
+            ViewBag.TotallTime = new TimeSpan(Course.CourseEpisodes.Sum(x => x.EpisodeTime.Ticks));
+
+            return View(Course);
+        }
     }
 }

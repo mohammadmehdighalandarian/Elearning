@@ -8,6 +8,7 @@ namespace LearningWeb_Core.DTOs.Course
         public string Title { get; set; }
         public string ImageName { get; set; }
         public long Price { get; set; }
+        public TimeSpan TotalTime { get; set; }
         public List<CourseEpisode> CourseEpisodes { get; set; }
     }
 }
